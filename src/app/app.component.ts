@@ -14,5 +14,22 @@ export class AppComponent {
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
 
-  firstTask: Task = new Task("Spend first 5 minutes of the day reflecting on what your grateful for");
+  tasks: Task[] = [
+    new Task("Spend first 5 minutes of the day reflecting on what your grateful for", 2),
+    new Task("Drink a glass of water to get hydrated", 1),
+    new Task("Go on a quick run to get body moving", 3)
+  ];
+  editTask(clickedTask) {
+    this.selectedTask = clickedTask;
+  }
+  orderColor(currentTask){
+    if (currentTask.order === 1) {
+      return "bg-danger";
+    } else if (currentTask.order === 2) {
+      return "bg-warning";
+    } else {
+      return "bg-success";
+    }
+  }
+  selectedTask: Task = this.tasks[0];
 }

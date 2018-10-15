@@ -1,5 +1,22 @@
 <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
+
+<h1>Welcome, {{userName}}!</h1>
+
+<form>
+  <input [(ngModel)]='userName' type='text' name='user'>
+</form>
 <h3>{{currentFocus}}</h3>
-<ul>
-  <li>{{firstTask.description}}</li>
-</ul>
+
+<h3>{{selectedTask.description}}</h3>
+<p>Task Complete? {{selectedTask.done}}</p>
+<h3>Edit Task</h3>
+<label>Enter Task Description</label>
+  <input [(ngModel)]="selectedTask.description">
+  <label>Enter Task order (1-3):</label>
+<br>
+  <input type="radio" [(ngModel)]="selectedTask.order" [value]="1">1 (High Priority)<br>
+  <input type="radio" [(ngModel)]="selectedTask.order" [value]="2">2 (Medium Priority)<br>
+  <input type="radio" [(ngModel)]="selectedTask.order" [value]="3">3 (Low Priority)
+    <ul>
+      <li [class]="orderColor(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}} <button (click)="editTask(currentTask)">Edit!</button></li>
+    </ul>
