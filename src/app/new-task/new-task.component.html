@@ -1,0 +1,14 @@
+<h1>New Task</h1>
+<div>
+ <label>Enter Task Description:</label>
+ <input #newDescription>
+</div>
+<div>
+  <label>Task Order:</label>
+  <select #newOrder>
+    <option [value]="1"> Low Order </option>
+    <option [value]="2"> Medium Order </option>
+    <option [value]="3"> High Order </option>
+  </select>
+  <button (click)="submitForm(newDescription.value, newOrder.value)">Add</button>
+</div>
